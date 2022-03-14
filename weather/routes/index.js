@@ -13,7 +13,7 @@ router.get('/', function(req, res) {
   res.render('index', { weather: null, err: null });
 
   const name = process.env.MY_NAME;
-  res.status(200).json({ name });
+  console.log({ name });
 
 });
 

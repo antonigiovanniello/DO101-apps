@@ -5,9 +5,6 @@ require('dotenv').config();
 const OWM_API_KEY = process.env.OWM_API_KEY || 'invalid_key';
 const UNITS = process.env.UNITS || 'metric';
 
-console.log({ name });
-console.log('USERNAME::::::', process.env.user);
-
 /* GET home page. */
 router.get('/', function(req, res) {
   res.render('index', { weather: null, err: null });
@@ -15,8 +12,7 @@ router.get('/', function(req, res) {
 
 router.post('/get_weather', async function (req,res) {
   let city = req.body.city;
-  let url = `https://api.meteomatics.com/2022-03-14T16:35:00.000+01:00/t_2m:C/40.4194416,15.3107562/json?model=mix`;
-  /*      http://api.openweathermap.org/data/2.5/weather?q=${city}&units=${UNITS}&appid=${OWM_API_KEY}*/
+  let url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&units=${UNITS}&appid=${OWM_API_KEY}`;
 
   try {
     let data = await fetch(url);

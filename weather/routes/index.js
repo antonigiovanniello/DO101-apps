@@ -5,9 +5,16 @@ require('dotenv').config();
 const OWM_API_KEY = process.env.OWM_API_KEY || 'invalid_key';
 const UNITS = process.env.UNITS || 'metric';
 
+// Set path to .env file
+dotenv.config({ path: '../.env' });
+
 /* GET home page. */
 router.get('/', function(req, res) {
   res.render('index', { weather: null, err: null });
+
+  const name = process.env.MY_NAME;
+  res.status(200).json({ name });
+
 });
 
 router.post('/get_weather', async function (req,res) {
